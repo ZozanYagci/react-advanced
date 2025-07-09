@@ -2,12 +2,30 @@ export default function FaqPage() {
   return (
     <>
       <div id="faq">
-        <h1>Sık Sorulan Sorular</h1>
-        <p>
-          Looking for quick answers? Our Frequently Asked Questions are here to
-          help you sort things out in no time. If you can’t find what you’re
-          looking for, feel free to reach out — we’re just a message away.
-        </p>
+        <h2>Sık Sorulan Sorular</h2>
+        <div className="question">
+          <h4>Question 1: How do I enroll in a course?</h4>
+          <p>
+            Simply browse our course catalog, pick the one you like, and click
+            "Enroll". You'll get instant access to all the materials.
+          </p>
+        </div>
+
+        <div className="question">
+          <h4>Question 2: Can I access courses on mobile?</h4>
+          <p>
+            Absolutely! Our platform is fully responsive — you can learn on your
+            phone, tablet, or laptop anytime, anywhere.
+          </p>
+        </div>
+
+        <div className="question">
+          <h4>Question 3: What if I need help during a course?</h4>
+          <p>
+            We’ve got your back. Visit our Help section or contact us directly.
+            Remember, learning is easier when we tackle challenges together.
+          </p>
+        </div>
       </div>
     </>
   );
