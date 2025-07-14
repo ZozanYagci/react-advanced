@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
-import CoursesPage from "./pages/Courses";
+import CoursesPage, { coursesLoader } from "./pages/Courses";
 import MainLayout from "./layouts/MainLayout";
 import ContactPage from "./help/ContactPage";
 import FaqPage from "./help/FaqPage";
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "home", element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
-      { path: "courses", element: <CoursesPage /> },
+      { path: "courses", element: <CoursesPage />, loader: coursesLoader },
       {
         path: "help",
         element: <HelpLayout />,
