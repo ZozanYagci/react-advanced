@@ -4,7 +4,6 @@ export default function CoursesPage() {
   const courses = useLoaderData();
   return (
     <>
-      <h1>Courses</h1>
       <div id="courses">
         {courses.map((item) => (
           <div key={item.id} className="card">
