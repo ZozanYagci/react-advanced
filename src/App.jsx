@@ -4,9 +4,10 @@ import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
 import CoursesPage, { coursesLoader } from "./pages/Courses";
 import MainLayout from "./layouts/MainLayout";
-import ContactPage from "./help/ContactPage";
-import FaqPage from "./help/FaqPage";
+import ContactPage from "./pages/help/ContactPage";
+import FaqPage from "./pages/help/FaqPage";
 import HelpLayout from "./layouts/HelpLayout";
+import CourseDetailsPage, { courseDetailsLoader } from "./pages/help/CourseDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "home", element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
       { path: "courses", element: <CoursesPage />, loader: coursesLoader },
+      {path: "courses/:courseid", element: <CourseDetailsPage/>, loader: courseDetailsLoader},
       {
         path: "help",
         element: <HelpLayout />,

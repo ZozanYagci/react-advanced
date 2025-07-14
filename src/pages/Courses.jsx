@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 export default function CoursesPage() {
   const courses = useLoaderData();
@@ -8,13 +8,16 @@ export default function CoursesPage() {
       <div id="courses">
         {courses.map((item) => (
           <div key={item.id} className="card">
-            <img src= {`http://localhost:5000/images/${item.image}`} alt=""></img>
+            <img
+              src={`http://localhost:5000/images/${item.image}`}
+              alt=""
+            ></img>
             <div>
-              <h4>{item.item}</h4>
+              <h4>{item.title}</h4>
               <p>{item.description}</p>
-              <a href="$">Detay</a>
+              <Link to={"/courses/" + item.id}>Detay</Link>
             </div>
-            </div>
+          </div>
         ))}
       </div>
     </>
