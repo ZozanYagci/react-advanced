@@ -2,7 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About";
-import CoursesPage, { coursesLoader } from "./pages/course/Courses";
+import CoursesPage, {
+  courseDeleteAction,
+  coursesLoader,
+} from "./pages/course/Courses";
 import MainLayout from "./layouts/MainLayout";
 import ContactPage from "./pages/help/Contact";
 import FaqPage from "./pages/help/Faq";
@@ -42,6 +45,10 @@ const router = createBrowserRouter([
                 path: "edit",
                 element: <CourseEditPage />,
                 action: courseAction,
+              },
+              {
+                path: "delete",
+                action: courseDeleteAction,
               },
             ],
           },

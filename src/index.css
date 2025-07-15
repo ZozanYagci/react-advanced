@@ -96,7 +96,7 @@ form textarea {
   color: #000;
 }
 
-form button {
+button {
   border: 0;
   padding: 10px;
   border-radius: 4px;
@@ -127,6 +127,7 @@ form button {
   cursor: pointer;
   text-decoration: none;
   margin-right: 5px;
+  font-size: 12px;
 }
 
 .course-desc {
