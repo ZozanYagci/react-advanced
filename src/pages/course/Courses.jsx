@@ -37,8 +37,13 @@ export default function CoursesPage() {
   );
 }
 export async function coursesLoader() {
-  const res = await fetch("http://localhost:5000/courses");
-  return res.json();
+  const response = await fetch("http://localhost:5000/courses");
+
+  if (!response.ok) {
+    throw new Response("Kurs listesi yüklenemedi", { status: 500 });
+  }
+
+  return response.json();
 }
 
 export async function courseDeleteAction({ params, request }) {
