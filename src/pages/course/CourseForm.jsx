@@ -5,10 +5,18 @@ import { isRequiredCheck, isValidImage } from "../../utils/validations";
 export default function CourseForm({ method, data }) {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
-  const errors = useActionData();
+  const result = useActionData();
 
   return (
     <Form method={method}>
+      {result && result.errors && (
+        <ul className="errors">
+          {Object.values(result.errors).map((err) => (
+            <li key={err}>{err}</li>
+          ))}
+        </ul>
+      )}
+
       <div>
         <label htmlFor="title">Title:</label>
         <input
@@ -17,7 +25,7 @@ export default function CourseForm({ method, data }) {
           id="title"
           defaultValue={data ? data.title : ""}
         />
-        {errors && errors.title && <p>{errors.title}</p>}
+        {result && result.title && <p>{result.title}</p>}
       </div>
       <div>
         <label htmlFor="image">Image:</label>
@@ -28,7 +36,7 @@ export default function CourseForm({ method, data }) {
           defaultValue={data ? data.image : ""}
         />
 
-        {errors && errors.image && <p>{errors.image}</p>}
+        {result && result.image && <p>{result.image}</p>}
       </div>
       <div>
         <label htmlFor="description">Description:</label>
@@ -38,7 +46,7 @@ export default function CourseForm({ method, data }) {
           defaultValue={data ? data.description : ""}
         ></textarea>
 
-        {errors && errors.description && <p>{errors.description}</p>}
+        {result && result.description && <p>{result.description}</p>}
       </div>
       <button disabled={isSubmitting} type="submit">
         {isSubmitting ? "Kayıt Ediliyor" : "Kaydet"}
@@ -79,7 +87,6 @@ export async function courseAction({ request, params }) {
   }
 
   if (Object.keys(errors).length) {
-    console.log(errors);
     return errors;
   }
 
@@ -88,6 +95,11 @@ export async function courseAction({ request, params }) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData),
   });
+
+  if (response.status === 403) {
+    console.log(response);
+    return response;
+  }
 
   if (response.ok) {
     return redirect("/courses");
